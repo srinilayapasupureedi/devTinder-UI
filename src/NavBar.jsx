@@ -5,9 +5,9 @@ const NavBar = () => {
   <div className="flex-1">
     <a className="btn btn-ghost text-xl">🧑‍💻DevTinder</a>
   </div>
-  <div className="flex gap-2 ">
-    <div className="dropdown dropdown-end mx-8">
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+  <div className="flex gap-4">
+    <div className="dropdown dropdown-end ">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar ">
         <div className="w-10 rounded-full">
           <img
            
