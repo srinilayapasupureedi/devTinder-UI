@@ -1,4 +1,10 @@
-@plugin "daisyui";
+@layer base {
+  * {
+    @apply box-border;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@plugin "daisyui";
