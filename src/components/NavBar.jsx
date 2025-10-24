@@ -30,13 +30,14 @@ const NavBar = () => {
     <Link to="/" className="btn btn-ghost text-xl">🧑‍💻DevTinder</Link>
   </div>
   <div className="flex gap-4">
+     {user && <p>Welcome, {user.firstName}</p>}
     { user && <div className="dropdown dropdown-end mx-[15px] ">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar ">
         <div className="w-10 rounded-full">
           <img
            
             alt="Tailwind CSS Navbar component"
-            src={user.profilePicture} />
+            src={user.profileImage} />
         </div>
       </div>
       <ul
