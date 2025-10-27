@@ -23,8 +23,6 @@ const Body = () => {
       }
     }
   };
-
-  // ✅ useEffect is at top level now
   useEffect(() => {
     fetchUser();
   }, []);

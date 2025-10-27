@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { removeUser } from '../utilis/userSlice'; 
 import { useState } from 'react';
+import Requests from './Requests';
 const NavBar = () => {
   // eslint-disable-next-line no-unused-vars
   const [error,setError]=useState('');
@@ -49,7 +50,8 @@ const NavBar = () => {
             <span className="badge">New</span>
           </Link>
         </li>
-        <li><Link to="/settings">Settings</Link></li>
+        <li><Link to="/connections">Connections</Link></li>
+        <li><Link to="/requests">Requests</Link></li>
         <li><a onClick={handleLogout}>Logout</a></li>
       </ul>
     </div>}

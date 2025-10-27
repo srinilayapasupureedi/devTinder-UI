@@ -15,8 +15,6 @@ const Feed =() => {
   const getFeed=async()=>{
   try{
     if (Array.isArray(userData) && userData.length > 0) return;//code break without this
-
-
     const res=await axios.get(`${BASE_URL}/user/feed`,{withCredentials:true});
     dispatch(addFeedData(res.data));
   }

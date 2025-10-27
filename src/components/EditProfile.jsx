@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import UserCard from "./UserCard";
 import axios from "axios";
@@ -10,7 +11,7 @@ const EditProfile = ({ user }) => {
   const safeUser = user || {};
   const [firstName, setFirstName] = useState(safeUser.firstName || "");
   const [lastName, setLastName] = useState(safeUser.lastName || "");
-  const [profileImage, setProfileImage] = useState(safeUser.profileImage);
+  const [profileImage, setProfileImage] = useState(safeUser.profileImage || " ");
   const [age, setAge] = useState(safeUser.age || "");
   const [gender, setGender] = useState(safeUser.gender || "");
   const [about, setAbout] = useState(safeUser.about || "");
@@ -31,7 +32,7 @@ const saveProfile = async () => {
 
     // Clean undefined/empty values
     const cleanData = Object.fromEntries(
-      Object.entries(requestData).filter(([_, v]) => v !== undefined && v !== "")
+      Object.entries(requestData).filter(([_key, v]) => v !== undefined && v !== "")
     );
 
   
