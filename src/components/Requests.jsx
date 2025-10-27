@@ -16,8 +16,11 @@ const Requests = () => {
         {},
         { withCredentials: true }
       );
+      console.log(res);
       dispatch( removeRequests(_id));
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
     const fetchRequests=async()=>{
         try{
@@ -46,7 +49,7 @@ const Requests = () => {
       <h1 className="text-bold text-white text-3xl">Requests</h1>
 
       {requests.map((request) => {
-        const { _id, firstName, lastName, profileImage, age, gender, about } = request.fromUserId;
+        const { _id,  profileImage, about } = request.fromUserId;
         return (
           <div
             key={_id}
