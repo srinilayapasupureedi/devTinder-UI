@@ -31,7 +31,7 @@ const Connections = () => {
 
   if (loading) return <h2>Loading connections...</h2>;
   if (!connections || connections.length === 0)
-    return <h2>No connections found</h2>;
+    return <h3 className='text-center'>No connections found</h3>;
 
    return (
     <div className="text-center my-10">

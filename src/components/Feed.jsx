@@ -27,14 +27,16 @@ useEffect(()=>{
   getFeed();
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[]);
+ if( !userData || userData.length===0)
+  return <h3 className='text-center text-white text-3xl mt-10'>No users found in feed</h3>;
 
-  return (
-    <div className='flex justify-center'>
-      {userData.map((user) => (
-        <Usercard  user={user} />
-      ))}
-    </div>
-  )
-}
+   return (
+    userData && (
+      <div className="flex justify-center my-10">
+        <Usercard user={userData[0]} />
+      </div>
+    )
+  );
+};
 
 export default Feed;

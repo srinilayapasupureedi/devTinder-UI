@@ -41,12 +41,12 @@ const Requests = () => {
       fetchRequests()
      },[]);
     if(!requests || requests.length===0)
-      return <h1> NO requests found</h1>
+      return <h3 className='text-center text-white text-3xl'> NO requests found</h3>
 
   
    return (
     <div className="text-center my-10">
-      <h1 className="text-bold text-white text-3xl">Requests</h1>
+      <h1 className="text-center text-white text-3xl">Requests</h1>
 
       {requests.map((request) => {
         const { _id,  profileImage, about } = request.fromUserId;
