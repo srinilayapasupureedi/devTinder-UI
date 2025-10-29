@@ -3,7 +3,7 @@ import axios from "axios";
 import { BASE_URL } from "../utilis/constants";
 import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../utilis/feedSlice";
-const UserCard = ({ user }) => {
+const Usercard = ({ user }) => {
   const { _id, firstName, lastName, age, about, profileImage, Gender } = user;
   const dispatch = useDispatch();
   const handleStatus = async (status, userId) => {
@@ -67,4 +67,4 @@ const UserCard = ({ user }) => {
   );
 };
 
-export default UserCard;
+export default Usercard;

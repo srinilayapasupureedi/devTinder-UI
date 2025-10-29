@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import UserCard from "./UserCard";
+import Usercard from "./Usercard";
 import axios from "axios";
 import { BASE_URL } from "../utilis/constants";
 import { useDispatch } from "react-redux";
