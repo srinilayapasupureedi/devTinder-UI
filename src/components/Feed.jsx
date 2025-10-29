@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFeedData } from '../utilis/feedSlice';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import Usercard from './UserCard';
+import Usercard from './Usercard';
 const Feed =() => {
   // eslint-disable-next-line no-unused-vars
   const [error,setError]=useState('');
