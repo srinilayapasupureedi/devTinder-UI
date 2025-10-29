@@ -115,19 +115,3 @@ postcss.config.js
 - Lint: `npm run lint`
 - Preview build: `npm run preview`
 
-## Next steps I can help with
-- Inspect `Routes/profile.js` and remove the 400 by matching the exact expected payload.
-- Add a visible inline error box to the Edit Profile form so server validation messages are visible in the UI.
-- Add a developer note to README showing how to switch between proxy and direct backend calls.
-
-## Contributing
-
-- Small, focused PRs are welcome. Keep styling consistent with Tailwind utility classes.
-
-## License
-
-Add a license of your choice (e.g. MIT) if you plan to publish this repository.
-
----
-
-If you want, I can commit this README for you and/or add a small Developer Quick Start section that documents the exact proxy/base_url change we applied during debugging.
