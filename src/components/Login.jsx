@@ -9,8 +9,8 @@ import { BASE_URL } from '../utilis/constants';
 const Login = () => {
   const dispatch=useDispatch();
   const navigate=useNavigate();
-  const [email ,setEmail]=useState('srinilayap@gmail.com');
-  const [password ,setPassword]=useState('SudhaRamu@292');
+  const [email ,setEmail]=useState('');
+  const [password ,setPassword]=useState('');
   const [isLoginForm,setLoginForm]=useState(false);
   const [firstName ,setFirstName]=useState('');
   const [lastName ,setLastName]=useState('');
