@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import Usercard from "./Usercard";
+import Usercard from './Usercard';
 import axios from "axios";
 import { BASE_URL } from "../utilis/constants";
 import { useDispatch } from "react-redux";
@@ -157,7 +157,7 @@ const saveProfile = async () => {
         </div>
 
         {/* Display updated user */}
-        <UserCard
+        <Usercard
           user={{
             firstName,
             lastName,
