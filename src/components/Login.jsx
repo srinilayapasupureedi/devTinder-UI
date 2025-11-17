@@ -1,109 +1,70 @@
-import React from 'react'
-import '../index.css';
-import { useState } from 'react';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { addUser }  from '../utilis/userSlice'
-import { useNavigate } from 'react-router-dom';
-import { BASE_URL } from '../utilis/constants';
-const Login = () => {
-  const dispatch=useDispatch();
-  const navigate=useNavigate();
-  const [email ,setEmail]=useState('');
-  const [password ,setPassword]=useState('');
-  const [isLoginForm,setLoginForm]=useState(false);
-  const [firstName ,setFirstName]=useState('');
-  const [lastName ,setLastName]=useState('');
-  const handleSignup=async()=>{
-    try{
-      const res=await axios.post(`${BASE_URL}/signup`,{
-        firstName,
-        lastName,
-        email,
-        password
-    },{withCredentials:true});
-    console.log(res.data);
-    dispatch(addUser(res.data.data));  
-    navigate('/profile');  
+import React from "react";
+import axios from "axios";
+import { BASE_URL } from "../utilis/constants";
+import { useDispatch } from "react-redux";
+import { removeUserFromFeed } from "../utilis/feedSlice";
+const Usercard = ({ user }) => {
+  const { _id, firstName, lastName, age, about, profileImage, Gender } = user;
+  const dispatch = useDispatch();
+  const handleStatus = async (status, userId) => {
+    try {
+      const res = await axios.post(`${BASE_URL}/request/send/${status}/${userId}`, {}, { withCredentials: true });
+      console.log(res.data);
+      dispatch(removeUserFromFeed(userId));
+    }
+    catch(err)
+    {
+      console.error(err);
+    }
   }
-  catch(err){
-    console.log(err);
-    alert('Signup failed. Please try again.');
-  }
-};
-  const handleLogin=async()=>{
-    try{
-          const res=await axios.post(`${BASE_URL}/login`,{
-        email,
-        password
-    },{withCredentials:true});
-    console.log(res.data);
-    dispatch(addUser(res.data));
-    alert('Login successful');
-    navigate('/');
-  }
-  catch(err){
-    console.log(err);
-    alert('Login failed. Please try again.');
-  }
-};
-  return (
-    <div className=' flex justify-center my-[25px] '>
-   <div className="card bg-base-300 w-96 shadow-sm">
-  <div className="card-body">
-    <h2 className="card-title flex justify-center">{isLoginForm ? "Login" : "Signup"}</h2>
-   {!isLoginForm &&<>
-  <fieldset className="w-full rounded-lg p-4 border-2 border-base-300 bg-base-300 mx-4 my-4">
-    <legend className=" text-sm bg-base-200">firstName</legend>
-    <input
-      type="text"
-      value={firstName}
-      placeholder="Enter your firstName"
-      className="input input-bordered w-full bg-base-100 border-2 border-base-300  mt-2 placeholder:text-gray-400"
-      onChange={(e)=>{setFirstName(e.target.value)}}
-    />
-    </fieldset>
-  <fieldset className="w-full rounded-lg p-4 border-2 border-base-300 bg-base-300 mx-4 my-4">
-    <legend className=" text-sm bg-base-200">LastName</legend>
-    <input
-      type="text"
-      value={lastName}
-      placeholder="Enter your LastName"
-      className="input input-bordered w-full bg-base-100 border-2 border-base-300  mt-2 placeholder:text-gray-400"
-      onChange={(e)=>{setLastName(e.target.value)}}
-    />
-    </fieldset>
-    </>}
- <fieldset className="w-full rounded-lg p-4 border-2 border-base-300 bg-base-300 mx-4 my-4">
-  <legend className=" text-sm bg-base-200">Email</legend>
-  <input
-    type="text"
-    value={email}
-    placeholder="Enter your email"
-    className="input input-bordered w-full bg-base-100 border-2 border-base-300  mt-2 placeholder:text-gray-400"
-    onChange={(e)=>{setEmail(e.target.value)}}
-  />
-  </fieldset>
- <fieldset className="w-full rounded-lg p-4 border-2 border-base-300 bg-base-300 mx-4 my-4">
-  <legend className=" text-sm bg-base-200">Password</legend>
-  <input
-    type="password"
-    value={password}
-    placeholder="Enter your password"
-    className="input input-bordered w-full bg-base-100 border-2 border-base-300  mt-2 placeholder:text-gray-400"
-    onChange={(e)=>setPassword(e.target.value)}
-  />
-  </fieldset>
-    <div className="card-actions justify-center">
-      <button className="btn btn-primary " onClick={isLoginForm ? handleLogin : handleSignup}>{isLoginForm ? "Login" : "Signup"}</button>
-    </div>
-    <p className="text-center cursor-pointer" onClick={()=>{
-      setLoginForm((value)=>!value)
-    }}>
-    {isLoginForm ? "Don't have an account? Signup" : "Already have an account? Login"}</p>
-  </div>
-</div>
-</div>
-)};
 
-export default Login;
+  return (
+    <div
+      className="
+        card bg-base-300 shadow-lg hover:shadow-2xl 
+        transition duration-300 rounded-2xl overflow-hidden 
+        transform hover:-translate-y-2 
+        mx-auto mt-6 mb-2 max-w-[360px] py-[20px] my-[20px]
+      "
+    >
+      <figure
+        className="
+          relative bg-gradient-to-br from-lime-300 to-green-400 
+          h-[200px]
+        "
+      >
+          <img
+      src={profileImage || "https://www.vecteezy.com/vector-art/25869648-monochrome-woman-avatar-silhouette-user-icon-vector-in-trendy-flat-design"}
+      alt={`${firstName} ${lastName}`}
+      className='object-cover rounded-t-2xl mt-4 w-full h-full transition-transform duration-300 hover:scale-105'
+    />
+      </figure>
+      <div className='card-body text-center px-5 py-5'>
+        <h2 className='text-lg font-semibold text-gray-800 dark:text-gray-100'>
+          {firstName} {lastName}, {age}
+        </h2>
+
+        <p className='text-sm text-gray-500 dark:text-gray-400 leading-relaxed mt-2'>
+          {about}
+        </p>
+  
+
+    
+        <div className="card-actions justify-center flex gap-3 mt-4">
+          <button className="btn btn-primary rounded-full transition-transform hover:scale-105 px-6"
+            onClick={()=>handleStatus("ignored",user._id)}
+          >
+            Ignore
+          </button>
+          <button className="btn btn-secondary rounded-full transition-transform hover:scale-105 px-6"
+            onClick={()=>handleStatus("interested",user._id)}
+          >
+            Interested
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Usercard;
